@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios - Integrantes</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!--Menú superior-->    
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a href="index.html" class="fas fa-home"></a>
+    <a class="navbar-brand" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Men&uacute; <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="basesdatos.html" tabindex="-1">Bases de Datos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formularios</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown09">
+            <a class="dropdown-item" href="integrantes.html">Integrantes</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </nav>
+<!--Fin de Menú superior-->
+
+<div class="container">
+    <div class="page-header">
+        <h1>EmPrendete</h1>
+    </div>
+    <h4>Integrantes</h4>
+    <!--Formulario-->
+    <form autocomplete="off" id="formulario">
+        <!--Tabla--> 
+        <table class="table table-hover" id="integrantesTable">
+            <tr>
+                <td>
+                    Id:
+                </td>
+                <td><input type="text" placeholder="id" name="id" id="idEstudiante"></td>
+            </tr>
+            <tr>
+                <td>
+                    Nombre:
+                </td>
+                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreEstudiante"></td>
+            </tr>    
+            <tr>
+                <td>
+                    Apellido:
+                </td>
+                <td><input type="text" placeholder="Apellido" name="apellido" id="apellidoEstudiante"></td>
+            </tr>
+            <tr>
+                <td>
+                    Edad:
+                </td>
+                <td><input type="number" placeholder="Edad" name="edad" id="edadEstudiante"></td>
+            </tr>
+            <tr>
+                <td>
+                    Genero:
+                </td>
+                <td>
+                    <input type="radio" name="genero" id="hombre" value="Hombre" checked>
+                    <label for="hombre">Hombre</label>
+                    <input type="radio" name="genero" id="mujer" value="Mujer">
+                    <label for="mujer">Mujer</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Carrera:
+                </td>
+                <td>
+                    <select id="carrera">
+                        <option value="ISC">Ing. en Sistemas Computacionales</option>
+                        <option value="MEC">Ing. Mecatronica</option>
+                        <option value="IND">Ing. Industrial</option>
+                        <option value="IGE">Ing. en Gestión Empresarial</option>
+                    </select>
+                    <select id="sem">
+                        <option value="1">1er.</option>
+                        <option value="2">2ndo.</option>
+                        <option value="3">3er.</option>
+                        <option value="4">4to.</option>
+                        <option value="5">5to.</option>
+                        <option value="6">6to.</option>
+                        <option value="7">7mo.</option>
+                        <option value="8">8vo.</option>
+                        <option value="9">9no.</option>
+                        <option value="10">10mo.</option>
+                        <option value="11">11vo.</option>
+                        <option value="12">12vo.</option>
+                    </select>
+                        <label for="sem">Semestre</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    e-mail:
+                </td>
+                <td><input type="email" placeholder="email@example.com" name="email" id="email"></td>
+            </tr>
+            <tr>
+                <td>
+                    URL:
+                </td>
+                <td><input type="text" placeholder="url imagen" name="url" id="url"></td>
+            </tr>
+        </table>
+        <!--Fin Tabla--> 
+        <button type="button" id="btnEnviar" class="btn btn-danger" role="button" 
+                    onclick="insertData()">Enviar</button>
+    </form>
+    <!--Fin Formulario--> 
+</div>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

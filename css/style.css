@@ -1,0 +1,23 @@
+input[type=email]{
+    color: black;
+}
+
+#tabla th, td {
+    white-space: nowrap;
+    }
+#id{
+    text-align: right;
+}
+
+#tablaID{
+    text-align: right;
+}
+#sem{
+    text-align: center;
+}
+
+.fas{
+    color: lightslategray;
+    width: 25px;
+    animation: none;
+}

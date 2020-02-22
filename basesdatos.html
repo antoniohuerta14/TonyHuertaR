@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
 </head>
-<body onload="getData()">
+<body>
 <!--Menú superior-->    
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
         <a href="index.html" class="fas fa-home"></a>
@@ -46,25 +46,39 @@
     <div class="page-header">
         <h1>EmPrendete</h1>
     </div>
-  </div>
-    <table class="table table-striped table-hover" id="tabla">
-      <caption>Tabla: Participantes</caption>
-      <thead class="thead-dark" id="tableHeader">
-        <tr>
-          <th id="id">id</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Edad</th>
-          <th>Genero</th>
-          <th>Carrera</th>
-          <th>Semestre</th>
-          <th>e-mail</th>
-          <th>URL</th>
-        </tr>
-    </thead>
-    <tbody id="tablaFirebase">
-    </tbody>
-    </table>
+</div>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Tabla 2</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tabla 3</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <table class="table table-striped table-hover" id="tabla">
+          <caption>Tabla: Participantes</caption>
+          <thead class="thead-dark" id="tableHeader">
+            <tr>
+              <th id="id">id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Edad</th>
+              <th>Genero</th>
+              <th>Carrera</th>
+              <th>Semestre</th>
+              <th>e-mail</th>
+              <th>URL</th>
+            </tr>
+        </thead>
+        <tbody id="tablaFirebase">
+        </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+    </div>
 
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -36,7 +36,7 @@ function validateEmail(email){
 
 function emptyUrl(url){
     if(url.length==0){
-         return url.value = "https://firebasestorage.googleapis.com/v0/b/subir-y-ver.appspot.com/o/default%20avatar.png?alt=media&token=a4ea5a85-6376-4f7a-a52a-5ec6d35f9ea5";
+         return url.value = "https://firebasestorage.googleapis.com/v0/b/emprendete-842ea.appspot.com/o/unnamed.jpg?alt=media&token=95ba6f13-90ca-4a45-8358-6de4c0c846a3";
     }else{
         return url;
     }

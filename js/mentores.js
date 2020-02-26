@@ -12,16 +12,16 @@ function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,url){
     return data;
 }
 
-function createTable(id,nombre,apellido,email,tw,fb,yt,url){
+function createTableMentores(id,nombre,apellido,email,tw,fb,yt,url){
     return '<tr>'+
     '<td id="tablaID">'+id+'</td>'+
     '<td>'+nombre+'</td>'+
     '<td>'+apellido+'</td>'+
-    '<td>'+email+'</td>'+
-    '<td>'+tw+'</td>'+
-    '<td>'+fb+'</td>'+
-    '<td>'+yt+'</td>'+
-    '<td> <a href="'+url+'">'+url+'<a/></td>'+
+    '<td><a href="mailto:'+email+'">'+email+'<a/></td>'+
+    '<td><a href="https://twitter.com/'+tw+'">@'+tw+'<a/></td>'+
+    '<td><a href="https://facebook.com/'+fb+'">fb.com/'+fb+'<a/></td>'+
+    '<td><a href="https://youtube.com/'+yt+'">yt.com/'+yt+'<a/></td>'+
+    '<td><a href="'+url+'">'+url+'<a/></td>'+
     '</tr>';
 }
 
@@ -29,10 +29,10 @@ function setMentores(){
     var id = $('#idMentor').val();
     var nombre = $("#nombreMentor").val();
     var apellido = $("#apellidoMentor").val();
-    var email = $("#email").val();
-    var twitter = ($("#twitter").val());
-    var fb = ($("#facebook").val());
-    var yt = ($("#youtube").val());
+    var email = $("#email").val().toLowerCase();
+    var twitter = $("#twitter").val().toLowerCase();
+    var fb = $("#facebook").val().toLowerCase();
+    var yt = $("#youtube").val().toLowerCase();
     var bio = ($("#bio").val());
     var url = $("#url").val();
 
@@ -70,9 +70,7 @@ function getMentores(){
         /*var bioAdd = taskValue.bio;*/
         var urlAdd = taskValue.url;
 
-        console.log((idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,urlAdd));
-
-        var tabla = createTable(idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,urlAdd);
+        var tabla = createTableMentores(idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,urlAdd);
         innerHTML('tablaMentores',tabla);
     })
 }

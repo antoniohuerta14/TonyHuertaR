@@ -12,7 +12,7 @@ function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,url){
     return data;
 }
 
-function createTable(id,nombre,apellido,edad,genero,carrera,semestre,email,url){
+function createTableIntegrantes(id,nombre,apellido,edad,genero,carrera,semestre,email,url){
     return '<tr>'+
     '<td id="tablaID">'+id+'</td>'+
     '<td>'+nombre+'</td>'+
@@ -34,7 +34,7 @@ function setIntegrantes(){
     var genero = $('input[name=genero]:checked').val();
     var carrera = $("#carrera" ).val();
     var semestre = parseInt($( "#sem" ).val());
-    var email = $("#email").val();
+    var email = $("#email").val().toLowerCase();
     var url = $("#url").val();
 
     var urlVerified = emptyUrl(url);
@@ -71,7 +71,7 @@ function getIntegrantes(){
         var mailAdd = taskValue.email;
         var urlAdd = taskValue.url;
 
-        var tabla = createTable(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,urlAdd);
+        var tabla = createTableIntegrantes(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,urlAdd);
         innerHTML('tablaIntegrantes',tabla);
     })
 }

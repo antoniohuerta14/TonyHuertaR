@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EmPrendete - Inicio</title>
+    <title>Formularios - Comit&eacute;</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
@@ -49,13 +49,68 @@
     <div class="page-header">
         <h1>EmPrendete</h1>
     </div>
-
+    <h4>Comit&eacute; Organizador</h4>
+    <!--Formulario-->
+    <form autocomplete="off" id="formulario">
+        <!--Tabla--> 
+        <table class="table table-hover" id="mentoresTable">
+            <tr>
+                <td>
+                    Id:
+                </td>
+                <td><input type="text" placeholder="id" name="id" id="idMentor"></td>
+            </tr>
+            <tr>
+                <td>
+                    Nombre:
+                </td>
+                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreMentor"></td>
+            </tr>    
+            <tr>
+              <td>
+                  Apellido:
+              </td>
+              <td><input type="text" placeholder="Apellido" name="apellido" id="apellidoMentor"></td>
+          </tr>    
+            <tr>
+                <td>
+                    Contacto:
+                </td>
+                <td><input type="email" placeholder="e-mail" name="email" id="email"></td>
+                <td><input type="text" placeholder="Twitter: @example" name="twitter" id="twitter"></td>
+                <td><input type="text" placeholder="Facebook" name="facebook" id="facebook"></td>
+                <td><input type="text" placeholder="YouTube Channel" name="youtube" id="youtube"></td>
+            </tr>
+            <tr>
+                <td>
+                    Biografia corta:
+                </td>
+                <td colspan="4">
+                  <textarea 
+                  id="bio" class="form-control" style="min-width: 100%" rows="8" cols="2">
+                  </textarea> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    URL:
+                </td>
+                <td><input type="text" placeholder="url imagen" name="url" id="url"></td>
+            </tr>
+        </table>
+        <!--Fin Tabla--> 
+        <button type="button" id="btnEnviar" class="btn btn-danger" role="button" 
+                    onclick="setDatosPersonales('comite')">Enviar</button>
+    </form>
+    <!--Fin Formulario--> 
 </div>
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<script src="js/baseDatos.js"></script>
+<script src="js/datosPersonales.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

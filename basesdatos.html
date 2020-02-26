@@ -34,6 +34,7 @@
           <a class="dropdown-item" href="integrantes.html">Integrantes</a>
           <a class="dropdown-item" href="mentores.html">Mentores</a>
           <a class="dropdown-item" href="jueces.html">Jueces</a>
+          <a class="dropdown-item" href="comite.html">Comit&eacute;</a>
         </div>
       </li>
     </ul>
@@ -49,83 +50,107 @@
         <h1>EmPrendete</h1>
     </div>
 </div>
+<!--Inicio del menú para seleccionar Bases de Datos-->
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+<!--<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>-->
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-participantes" role="tab" aria-controls="nav-participantes" aria-selected="true" >Participantes</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Equipos</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Proyectos</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-mentores" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="getDatosPersonales('Mentores'); this.onclick=null;">Mentores</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-jueces" role="tab" aria-controls="nav-contact" aria-selected="false" onclick="getDatosPersonales('Jueces'); this.onclick=null;">Jueces</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-comite" role="tab" aria-controls="nav-contact" aria-selected="false" onclick="getDatosPersonales('Comite'); this.onclick=null;">Comit&eacute;</a>
+    <a class="nav-item nav-link dropdown-toggle" id="nav-action-tab" data-toggle="dropdown" href="#" role="tab" aria-controls="nav-dropdown" aria-selected="false">Tabla 4</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#nav-action" data-toggle="tab" role="tab" aria-controls="nav-action">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-participantes" role="tabpanel" aria-labelledby="nav-home-tab">
+    <!--Tabla 1-->
+    <table class="table table-striped table-hover" id="tabla">
+      <caption>Tabla: Participantes</caption>
+        <thead class="thead-dark" id="tableHeader">
+          <tr>
+            <th id="id">id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Genero</th>
+            <th>Carrera</th>
+            <th>Semestre</th>
+            <th>e-mail</th>
+            <th>URL imagen</th>
+          </tr>
+        </thead>
+      <tbody id="tablaIntegrantes"></tbody>
+    </table>
+  </div>
+  <!--Tabla 2-->
+  <div class="tab-pane fade" id="nav-mentores" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <table class="table table-striped table-hover" id="tabla">
+      <caption>Tabla: Mentores</caption>
+        <thead class="thead-dark" id="tableHeader">
+          <tr>
+            <th id="id">id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>e-mail</th>
+            <th>Twitter</th>
+            <th>Facebook</th>
+            <th>YouTube</th>
+            <th>URL imagen</th>
+          </tr>
+        </thead>
+      <tbody id="tablaMentores"></tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="nav-jueces" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <table class="table table-striped table-hover" id="tabla">
+      <caption>Tabla: Jueces</caption>
+        <thead class="thead-dark" id="tableHeader">
+          <tr>
+            <th id="id">id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>e-mail</th>
+            <th>Twitter</th>
+            <th>Facebook</th>
+            <th>YouTube</th>
+            <th>URL imagen</th>
+          </tr>
+        </thead>
+      <tbody id="tablaJueces"></tbody>
+    </table>        
+  </div>
 
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <!--<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>-->
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Integrantes</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="getMentores('Mentores'); this.onclick=null;">Mentores</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" onclick="getMentores('Jueces'); this.onclick=null;">Jueces</a>
-        <a class="nav-item nav-link dropdown-toggle" id="nav-action-tab" data-toggle="dropdown" href="#" role="tab" aria-controls="nav-dropdown" aria-selected="false">Tabla 4</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#nav-action" data-toggle="tab" role="tab" aria-controls="nav-action">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <!--Tabla 1-->
-        <table class="table table-striped table-hover" id="tabla">
-          <caption>Tabla: Participantes</caption>
-            <thead class="thead-dark" id="tableHeader">
-              <tr>
-                <th id="id">id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Edad</th>
-                <th>Genero</th>
-                <th>Carrera</th>
-                <th>Semestre</th>
-                <th>e-mail</th>
-                <th>URL imagen</th>
-              </tr>
-            </thead>
-          <tbody id="tablaIntegrantes"></tbody>
-        </table>
-      </div>
-      <!--Tabla 2-->
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <table class="table table-striped table-hover" id="tabla">
-          <caption>Tabla: Mentores</caption>
-            <thead class="thead-dark" id="tableHeader">
-              <tr>
-                <th id="id">id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>e-mail</th>
-                <th>Twitter</th>
-                <th>Facebook</th>
-                <th>YouTube</th>
-                <th>URL imagen</th>
-              </tr>
-            </thead>
-          <tbody id="tablaMentores"></tbody>
-        </table>
-      </div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <table class="table table-striped table-hover" id="tabla">
-          <caption>Tabla: Jueces</caption>
-            <thead class="thead-dark" id="tableHeader">
-              <tr>
-                <th id="id">id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>e-mail</th>
-                <th>Twitter</th>
-                <th>Facebook</th>
-                <th>YouTube</th>
-                <th>URL imagen</th>
-              </tr>
-            </thead>
-          <tbody id="tablaJueces"></tbody>
-        </table>        
-      </div>
-      <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">tabla 4</div>
-    </div>
+  <div class="tab-pane fade" id="nav-comite" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <table class="table table-striped table-hover" id="tabla">
+      <caption>Tabla: Comit&eacute;</caption>
+        <thead class="thead-dark" id="tableHeader">
+          <tr>
+            <th id="id">id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>e-mail</th>
+            <th>Twitter</th>
+            <th>Facebook</th>
+            <th>YouTube</th>
+            <th>URL imagen</th>
+          </tr>
+        </thead>
+      <tbody id="tablaComite"></tbody>
+    </table>        
+  </div>
+  <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">tabla 4</div>
+</div>
+
+<!--Fin del menú para seleccionar Bases de Datos-->
 
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -133,7 +158,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
 <script src="js/baseDatos.js"></script>
-<script src="js/mentores.js"></script>
+<script src="js/datosPersonales.js"></script>
 <script src="js/integrantes.js"></script>
 <script src="js/index.js"></script>
 </body>

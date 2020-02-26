@@ -2,7 +2,7 @@ input[type=email]{
     color: black;
 }
 
-#tabla th, td {
+#tabla, th, td {
     white-space: nowrap;
     }
 #id{
@@ -20,4 +20,10 @@ input[type=email]{
     color: lightslategray;
     width: 25px;
     animation: none;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularios - Integrantes</title>
+    <title>Formularios - Mentores</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
@@ -47,79 +47,47 @@
     <div class="page-header">
         <h1>EmPrendete</h1>
     </div>
-    <h4>Integrantes</h4>
+    <h4>Mentores</h4>
     <!--Formulario-->
     <form autocomplete="off" id="formulario">
         <!--Tabla--> 
-        <table class="table table-hover" id="integrantesTable">
+        <table class="table table-hover" id="mentoresTable">
             <tr>
                 <td>
                     Id:
                 </td>
-                <td><input type="text" placeholder="id" name="id" id="idEstudiante"></td>
+                <td><input type="text" placeholder="id" name="id" id="idMentor"></td>
             </tr>
             <tr>
                 <td>
                     Nombre:
                 </td>
-                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreEstudiante"></td>
+                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreMentor"></td>
             </tr>    
             <tr>
+              <td>
+                  Apellido:
+              </td>
+              <td><input type="text" placeholder="Apellido" name="apellido" id="apellidoMentor"></td>
+          </tr>    
+            <tr>
                 <td>
-                    Apellido:
+                    Contacto:
                 </td>
-                <td><input type="text" placeholder="Apellido" name="apellido" id="apellidoEstudiante"></td>
+                <td><input type="email" placeholder="e-mail" name="email" id="email"></td>
+                <td><input type="text" placeholder="Twitter: @example" name="twitter" id="twitter"></td>
+                <td><input type="text" placeholder="Facebook" name="facebook" id="facebook"></td>
+                <td><input type="text" placeholder="YouTube Channel" name="youtube" id="youtube"></td>
             </tr>
             <tr>
                 <td>
-                    Edad:
+                    Biografia corta:
                 </td>
-                <td><input type="number" placeholder="Edad" name="edad" id="edadEstudiante"></td>
-            </tr>
-            <tr>
-                <td>
-                    Genero:
+                <td colspan="4">
+                  <textarea 
+                  id="bio" class="form-control" style="min-width: 100%" rows="8" cols="2">
+                  </textarea> 
                 </td>
-                <td>
-                    <input type="radio" name="genero" id="hombre" value="Hombre" checked>
-                    <label for="hombre">Hombre</label>
-                    <input type="radio" name="genero" id="mujer" value="Mujer">
-                    <label for="mujer">Mujer</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Carrera:
-                </td>
-                <td>
-                    <select id="carrera">
-                        <option value="ISC">Ing. en Sistemas Computacionales</option>
-                        <option value="MEC">Ing. Mecatronica</option>
-                        <option value="IND">Ing. Industrial</option>
-                        <option value="IGE">Ing. en Gestión Empresarial</option>
-                    </select>
-                    <select id="sem">
-                        <option value="1">1er.</option>
-                        <option value="2">2ndo.</option>
-                        <option value="3">3er.</option>
-                        <option value="4">4to.</option>
-                        <option value="5">5to.</option>
-                        <option value="6">6to.</option>
-                        <option value="7">7mo.</option>
-                        <option value="8">8vo.</option>
-                        <option value="9">9no.</option>
-                        <option value="10">10mo.</option>
-                        <option value="11">11vo.</option>
-                        <option value="12">12vo.</option>
-                    </select>
-                        <label for="sem">Semestre</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    e-mail:
-                </td>
-                <td><input type="email" placeholder="email@example.com" name="email" id="email"></td>
             </tr>
             <tr>
                 <td>
@@ -130,7 +98,7 @@
         </table>
         <!--Fin Tabla--> 
         <button type="button" id="btnEnviar" class="btn btn-danger" role="button" 
-                    onclick="setIntegrantes()">Enviar</button>
+                    onclick="setMentores()">Enviar</button>
     </form>
     <!--Fin Formulario--> 
 </div>
@@ -139,7 +107,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
-<script src="js/integrantes.js"></script>
+<script src="js/baseDatos.js"></script>
+<script src="js/mentores.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

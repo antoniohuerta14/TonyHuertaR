@@ -8,38 +8,39 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="getIntegrantes()">
 <!--Menú superior-->    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-        <a href="index.html" class="fas fa-home"></a>
-        <a class="navbar-brand" href="index.html">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarsExample09">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Men&uacute; <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="basesdatos.html" tabindex="-1">Bases de Datos</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formularios</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown09">
-                <a class="dropdown-item" href="integrantes.html">Integrantes</a>
-              </div>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-          </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+  <a href="index.html" class="fas fa-home"></a>
+  <a class="navbar-brand" href="index.html">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample09">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Men&uacute; <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="basesdatos.html" tabindex="-1">Bases de Datos</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formularios</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown09">
+          <a class="dropdown-item" href="integrantes.html">Integrantes</a>
+          <a class="dropdown-item" href="mentores.html">Mentores</a>
         </div>
-      </nav>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </form>
+  </div>
+</nav>
 <!--Fin de Menú superior-->
 
 <div class="container ">
@@ -50,34 +51,62 @@
 
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Tabla 2</a>
+    <!--<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>-->
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Integrantes</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="getMentores(); this.onclick=null;">Mentores</a>
         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tabla 3</a>
+        <a class="nav-item nav-link dropdown-toggle" id="nav-action-tab" data-toggle="dropdown" href="#" role="tab" aria-controls="nav-dropdown" aria-selected="false">Tabla 4</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#nav-action" data-toggle="tab" role="tab" aria-controls="nav-action">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <!--Tabla 1-->
         <table class="table table-striped table-hover" id="tabla">
           <caption>Tabla: Participantes</caption>
-          <thead class="thead-dark" id="tableHeader">
-            <tr>
-              <th id="id">id</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Edad</th>
-              <th>Genero</th>
-              <th>Carrera</th>
-              <th>Semestre</th>
-              <th>e-mail</th>
-              <th>URL</th>
-            </tr>
-        </thead>
-        <tbody id="tablaFirebase">
-        </tbody>
+            <thead class="thead-dark" id="tableHeader">
+              <tr>
+                <th id="id">id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Genero</th>
+                <th>Carrera</th>
+                <th>Semestre</th>
+                <th>e-mail</th>
+                <th>URL imagen</th>
+              </tr>
+            </thead>
+          <tbody id="tablaIntegrantes"></tbody>
         </table>
       </div>
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+      <!--Tabla 2-->
+      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <table class="table table-striped table-hover" id="tabla">
+          <caption>Tabla: Mentores</caption>
+            <thead class="thead-dark" id="tableHeader">
+              <tr>
+                <th id="id">id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>e-mail</th>
+                <th>Twitter</th>
+                <th>Facebook</th>
+                <th>YouTube</th>
+                <th>URL imagen</th>
+              </tr>
+            </thead>
+          <tbody id="tablaMentores"></tbody>
+        </table>
+      </div>
       <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">tabla 4</div>
     </div>
 
 <script src="js/jquery-3.4.1.js"></script>
@@ -85,6 +114,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<script src="js/baseDatos.js"></script>
+<script src="js/mentores.js"></script>
+<script src="js/integrantes.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

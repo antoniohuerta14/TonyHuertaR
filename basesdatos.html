@@ -33,6 +33,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdown09">
           <a class="dropdown-item" href="integrantes.html">Integrantes</a>
           <a class="dropdown-item" href="mentores.html">Mentores</a>
+          <a class="dropdown-item" href="jueces.html">Jueces</a>
         </div>
       </li>
     </ul>
@@ -53,8 +54,8 @@
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <!--<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" onclick="getData(); this.onclick=null;">Integrantes</a>-->
         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true" >Integrantes</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="getMentores(); this.onclick=null;">Mentores</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Tabla 3</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" onclick="getMentores('Mentores'); this.onclick=null;">Mentores</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false" onclick="getMentores('Jueces'); this.onclick=null;">Jueces</a>
         <a class="nav-item nav-link dropdown-toggle" id="nav-action-tab" data-toggle="dropdown" href="#" role="tab" aria-controls="nav-dropdown" aria-selected="false">Tabla 4</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#nav-action" data-toggle="tab" role="tab" aria-controls="nav-action">Action</a>
@@ -105,7 +106,24 @@
           <tbody id="tablaMentores"></tbody>
         </table>
       </div>
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <table class="table table-striped table-hover" id="tabla">
+          <caption>Tabla: Jueces</caption>
+            <thead class="thead-dark" id="tableHeader">
+              <tr>
+                <th id="id">id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>e-mail</th>
+                <th>Twitter</th>
+                <th>Facebook</th>
+                <th>YouTube</th>
+                <th>URL imagen</th>
+              </tr>
+            </thead>
+          <tbody id="tablaJueces"></tbody>
+        </table>        
+      </div>
       <div class="tab-pane fade" id="nav-action" role="tabpanel" aria-labelledby="nav-action-tab">tabla 4</div>
     </div>
 

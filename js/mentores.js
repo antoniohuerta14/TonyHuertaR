@@ -26,6 +26,8 @@ function createTableMentores(id,nombre,apellido,email,tw,fb,yt,url){
 }
 
 function setMentores(){
+    var baseDatos = $('#nombrePagina').text().toLowerCase();
+
     var id = $('#idMentor').val();
     var nombre = $("#nombreMentor").val();
     var apellido = $("#apellidoMentor").val();
@@ -44,7 +46,7 @@ function setMentores(){
     }else{
         if(validateEmail(email)){
             var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,urlVerified);
-            const insertar = firebase.database().ref('mentores/'+id);
+            const insertar = firebase.database().ref(baseDatos+'/'+id);
             insertar.update(arrayData);
 
             if (confirm('Los datos son correctos?')){
@@ -55,8 +57,8 @@ function setMentores(){
     }
 }
 
-function getMentores(){
-    var task = firebase.database().ref("mentores/");
+function getMentores(nombreBD){
+    var task = firebase.database().ref(nombreBD.toLowerCase()+'/');
     task.on("child_added",function(data){
         var taskValue = data.val();
         
@@ -71,6 +73,6 @@ function getMentores(){
         var urlAdd = taskValue.url;
 
         var tabla = createTableMentores(idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,urlAdd);
-        innerHTML('tablaMentores',tabla);
+        innerHTML('tabla'+nombreBD+'',tabla);
     })
 }

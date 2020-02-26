@@ -1,15 +1,16 @@
 //Inicializacion de Firebase
 var firebaseConfig = {
-  apiKey: "AIzaSyAolZ3RTeKa9ypeD9iouQy9sB1DzrYMy0A",
-  authDomain: "subir-y-ver.firebaseapp.com",
-  databaseURL: "https://subir-y-ver.firebaseio.com",
-  projectId: "subir-y-ver",
-  storageBucket: "subir-y-ver.appspot.com",
-  messagingSenderId: "154329800121",
-  appId: "1:154329800121:web:f8da9cf0e0b09205216a68"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+    apiKey: "AIzaSyCChTlB7gD-N9RgY2helvb0g3zj1nWrIFc",
+    authDomain: "emprendete-842ea.firebaseapp.com",
+    databaseURL: "https://emprendete-842ea.firebaseio.com",
+    projectId: "emprendete-842ea",
+    storageBucket: "emprendete-842ea.appspot.com",
+    messagingSenderId: "781556060139",
+    appId: "1:781556060139:web:1e40fe86238bdb4e8053ae",
+    measurementId: "G-3VDV6LJHCM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 //Funciones get()
 function getId(id){

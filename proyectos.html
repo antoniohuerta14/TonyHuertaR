@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularios - Mentores</title>
+    <title>Formularios - Proyectos</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
@@ -45,12 +45,11 @@
   </div>
 </nav>
 <!--Fin de Menú superior-->
-
 <div class="container">
     <div class="page-header">
         <h1>EmPrendete</h1>
     </div>
-    <h4>Mentores</h4>
+    <h4>Proyectos</h4>
     <!--Formulario-->
     <form autocomplete="off" id="formulario">
         <!--Tabla--> 
@@ -59,47 +58,50 @@
                 <td>
                     Id:
                 </td>
-                <td><input type="text" placeholder="id" name="id" id="idDatosPers"></td>
+                <td><input type="text" placeholder="id" name="id" id="idProy"></td>
             </tr>
             <tr>
                 <td>
                     Nombre:
                 </td>
-                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreDatosPers"></td>
+                <td><input type="text" placeholder="Nombre" name="nombre" id="nombreProy"></td>
             </tr>    
             <tr>
               <td>
-                  Apellido:
+                  Tema:
               </td>
-              <td><input type="text" placeholder="Apellido" name="apellido" id="apellidoDatosPers"></td>
+              <td><input type="text" placeholder="Tema" name="apellido" id="temaProy"></td>
+          </tr>
+          <tr>
+            <td>
+                Descripci&oacute;n corta:
+            </td>
+            <td>
+              <textarea class="form-control rounded-0" id="descripcion" rows="10"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                Instituci&oacute;n:
+            </td>
+            <td><input type="text" placeholder="Escuela" name="escuela" id="escuela"></td>
+          </tr>
+          <tr>
+            <td>
+                Equipo:
+            </td>
+            <td><input type="text" placeholder="Nombre Equipo" name="equipo" id="equipo"></td>
           </tr>    
             <tr>
-                <td>
-                    Contacto:
-                </td>
-                <td><input type="email" placeholder="e-mail" name="email" id="email"></td>
-                <td><input type="text" placeholder="Twitter: @example" name="twitter" id="twitter"></td>
-                <td><input type="text" placeholder="Facebook" name="facebook" id="facebook"></td>
-                <td><input type="text" placeholder="YouTube Channel" name="youtube" id="youtube"></td>
-            </tr>
-            <tr>
-                <td>
-                    Biografia corta:
-                </td>
-                <td colspan="4">
-                  <textarea class="form-control rounded-0" id="bio" rows="10"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    URL:
-                </td>
-                <td><input type="text" placeholder="url imagen" name="url" id="url"></td>
+              <td>
+                  URL:
+              </td>
+              <td><input type="text" placeholder="url imagen" name="url" id="url"></td>
             </tr>
         </table>
         <!--Fin Tabla--> 
         <button type="button" id="btnEnviar" class="btn btn-danger" role="button" 
-                    onclick="setDatosPersonales('mentores')">Enviar</button>
+                    onclick="setProyectos()">Enviar</button>
     </form>
     <!--Fin Formulario--> 
 </div>
@@ -109,7 +111,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
 <script src="js/baseDatos.js"></script>
-<script src="js/datosPersonales.js"></script>
+<script src="js/proyectos.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

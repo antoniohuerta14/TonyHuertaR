@@ -26,9 +26,9 @@ function createTableDatos(id,nombre,apellido,email,tw,fb,yt,url){
 }
 
 function setDatosPersonales(baseDatos){
-    var id = $('#idMentor').val();
-    var nombre = $("#nombreMentor").val();
-    var apellido = $("#apellidoMentor").val();
+    var id = $('#idDatosPers').val();
+    var nombre = $("#nombreDatosPers").val();
+    var apellido = $("#apellidoDatosPers").val();
     var email = $("#email").val().toLowerCase();
     var twitter = $("#twitter").val().toLowerCase();
     var fb = $("#facebook").val().toLowerCase();

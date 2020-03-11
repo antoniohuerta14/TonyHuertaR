@@ -33,10 +33,9 @@ function setConferencias(){
         alert("EMPTY FIELDS");
     }else{
         var arrayData = arrayJSON(nombre,desc,fecha,hora);
-        const insertar = firebase.database().ref('conferencias/'+id);
-        insertar.update(arrayData);
-
         if (confirm('Los datos son correctos?')){
+            const insertar = firebase.database().ref('conferencias/'+id);
+            insertar.update(arrayData);
             alert("Se Añadieron Correctamente");
             $('#formulario').trigger("reset");
         }

@@ -1,4 +1,4 @@
-function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,url){
+function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,img){
     var data = {
         nombre : nombre,
         apellido : apellido,
@@ -7,7 +7,7 @@ function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,url){
         carrera: carrera,
         semestre: semestre,
         email: email,
-        url:url
+        img:img
     };
     return data;
 }
@@ -35,20 +35,19 @@ function setIntegrantes(){
     var carrera = $("#carrera" ).val();
     var semestre = parseInt($( "#sem" ).val());
     var email = $("#email").val().toLowerCase();
-    var url = $("#url").val();
-
-    var urlVerified = emptyUrl(url);
+    var imagen = document.getElementById('imagen').files[0];
+    var imgVerified = emptyImg(imagen);
 
     if(id.length==0||nombre.length==0||apellido.length==0|| 
         edad.length==0){
         alert("EMPTY FIELDS");
     }else{
         if(validateEmail(email)){
-            var arrayData = arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,urlVerified);
-            const insertar = firebase.database().ref('participantes/'+id);
-            insertar.update(arrayData);
-
+            var arrayData = arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,imgVerified);
             if (confirm('Los datos son correctos?')){
+                addImg(imagen,imgVerified,'participantes');
+                const insertar = firebase.database().ref('participantes/'+id);
+                insertar.update(arrayData);
                 alert("Se Añadieron Correctamente");
                 $('#formulario').trigger("reset");
             }
@@ -69,9 +68,17 @@ function getIntegrantes(){
         var carreraAdd = taskValue.carrera;
         var semAdd = taskValue.semestre;
         var mailAdd = taskValue.email;
-        var urlAdd = taskValue.url;
+        var imgAdd = taskValue.img;
 
-        var tabla = createTableIntegrantes(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,urlAdd);
-        innerHTML('tablaIntegrantes',tabla);
+        var storageRef;
+        if(imgAdd!='unnamed.jpg'){
+            storageRef = storage.ref('Imagenes/participantes/'+imgAdd);
+        }else{
+            storageRef = storage.ref('Imagenes/'+imgAdd);
+        }
+        storageRef.getDownloadURL().then(function(url){
+            var tabla = createTableIntegrantes(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,imgAdd);
+            innerHTML('tablaIntegrantes',tabla);
+        });
     })
 }

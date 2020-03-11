@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/e0bf9fad4a.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 </head>
 <body>
 <!--Menú superior-->    
@@ -36,11 +37,13 @@
             <a class="dropdown-item" href="mentores.html">Mentores</a>
             <a class="dropdown-item" href="jueces.html">Jueces</a>
             <a class="dropdown-item" href="comite.html">Comit&eacute;</a>
+            <a class="dropdown-item" href="conferencias.html">Conferencias</a>
+            <a class="dropdown-item" href="conferencistas.html">Conferencistas</a>
           </div>
         </li>
       </ul>
       <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <button class="form-control">Log Out</button>
       </form>
     </div>
   </nav>
@@ -126,10 +129,10 @@
             </tr>
             <tr>
                 <td>
-                    URL:
+                    Imagen:
                 </td>
-                <td><input type="text" placeholder="url imagen" name="url" id="url"></td>
-            </tr>
+                <td><input type="file" id="imagen" accept="image/*"></td>
+              </tr>
         </table>
         <!--Fin Tabla--> 
         <button type="button" id="btnEnviar" class="btn btn-danger" role="button" 
@@ -140,9 +143,10 @@
 <script src="js/jquery-3.4.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
 <script src="js/integrantes.js"></script>
+<script src="js/firebase.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

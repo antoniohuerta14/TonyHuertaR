@@ -1,4 +1,4 @@
-function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,url){
+function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,img){
     var data = {
         nombre : nombre,
         apellido : apellido,
@@ -7,7 +7,7 @@ function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,url){
         facebook: fb,
         youtube: yt,
         bio: bio,
-        url:url
+        img:img
     };
     return data;
 }
@@ -21,7 +21,7 @@ function createTableDatos(id,nombre,apellido,email,tw,fb,yt,url){
     '<td><a href="https://twitter.com/'+tw+'">@'+tw+'<a/></td>'+
     '<td><a href="https://facebook.com/'+fb+'">fb.com/'+fb+'<a/></td>'+
     '<td><a href="https://youtube.com/'+yt+'">yt.com/'+yt+'<a/></td>'+
-    '<td><a href="'+url+'">'+url+'<a/></td>'+
+    '<td><a href="'+url+'" target="blank">'+url+'<a/></td>'+
     '</tr>';
 }
 
@@ -34,20 +34,19 @@ function setDatosPersonales(baseDatos){
     var fb = $("#facebook").val().toLowerCase();
     var yt = $("#youtube").val().toLowerCase();
     var bio = ($("#bio").val());
-    var url = $("#url").val();
-
-    var urlVerified = emptyUrl(url);
+    var imagen = document.getElementById('imagen').files[0];
+    var imgVerified = emptyImg(imagen);
 
     if(id.length==0||nombre.length==0||apellido.length==0|| 
         bio.length==0){
         alert("EMPTY FIELDS");
     }else{
         if(validateEmail(email)){
-            var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,urlVerified);
-            const insertar = firebase.database().ref(baseDatos+'/'+id);
-            insertar.update(arrayData);
-
+            var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,imgVerified); 
             if (confirm('Los datos son correctos?')){
+                addImg(imagen,imgVerified,baseDatos);
+                const insertar = firebase.database().ref(baseDatos+'/'+id);
+                insertar.update(arrayData);
                 alert("Se Añadieron Correctamente");
                 $('#formulario').trigger("reset");
             }
@@ -57,20 +56,28 @@ function setDatosPersonales(baseDatos){
 
 function getDatosPersonales(nombreBD){
     var task = firebase.database().ref(nombreBD.toLowerCase()+'/');
-    task.on("child_added",function(data){
-        var taskValue = data.val();
+    task.on("child_added",function(snapshot){
+        var taskValue = snapshot.val();
         
-        var idAdd = data.key;
-        var nombreAdd = taskValue.nombre;
-        var apellidoAdd = taskValue.apellido;
-        var emailAdd = taskValue.email;
-        var twitterAdd = taskValue.twitter;
-        var fbAdd = taskValue.facebook;
-        var ytAdd = taskValue.youtube;
-        /*var bioAdd = taskValue.bio;*/
-        var urlAdd = taskValue.url;
-
-        var tabla = createTableDatos(idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,urlAdd);
-        innerHTML('tabla'+nombreBD+'',tabla);
+        let idAdd = snapshot.key;
+        let nombreAdd = taskValue.nombre;
+        let apellidoAdd = taskValue.apellido;
+        let emailAdd = taskValue.email;
+        let twitterAdd = taskValue.twitter;
+        let fbAdd = taskValue.facebook;
+        let ytAdd = taskValue.youtube;
+        let imgAdd = taskValue.img;
+        /*var bioAdd = taskValue.bio;
+        let urlAdd = taskValue.url;*/
+        var storageRef;
+        if(imgAdd!='unnamed.jpg'){
+            storageRef = storage.ref('Imagenes/'+nombreBD.toLowerCase()+'/'+imgAdd);
+        }else{
+            storageRef = storage.ref('Imagenes/'+imgAdd);
+        }
+        storageRef.getDownloadURL().then(function(url){
+            var tabla = createTableDatos(idAdd,nombreAdd,apellidoAdd,emailAdd,twitterAdd,fbAdd,ytAdd,url);
+            innerHTML('tabla'+nombreBD+'',tabla);
+        });
     })
 }

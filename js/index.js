@@ -1,16 +1,17 @@
-//Inicializacion de Firebase
-var firebaseConfig = {
-    apiKey: "AIzaSyCChTlB7gD-N9RgY2helvb0g3zj1nWrIFc",
-    authDomain: "emprendete-842ea.firebaseapp.com",
-    databaseURL: "https://emprendete-842ea.firebaseio.com",
-    projectId: "emprendete-842ea",
-    storageBucket: "emprendete-842ea.appspot.com",
-    messagingSenderId: "781556060139",
-    appId: "1:781556060139:web:1e40fe86238bdb4e8053ae",
-    measurementId: "G-3VDV6LJHCM"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+/*var uid = null;
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      uid = user.uid;
+    }else{
+        uid = null;
+        window.location.replace('login.html');
+    }
+  });
+
+  function logOut(){
+      firebase.auth().signOut();
+  }*/
 
 //Funciones get()
 function getId(id){
@@ -39,6 +40,24 @@ function emptyUrl(url){
          return url.value = "https://firebasestorage.googleapis.com/v0/b/emprendete-842ea.appspot.com/o/unnamed.jpg?alt=media&token=95ba6f13-90ca-4a45-8358-6de4c0c846a3";
     }else{
         return url;
+    }
+}
+
+function emptyImg(img){
+    if(img==undefined){
+         //return img.value = 'unnamed.jpg';
+         //return storage.ref('Imagenes/unnamed.jpg');
+         return 'unnamed.jpg'
+    }else{
+        return img.name;
+    }
+}
+
+function addImg(imagen,nombre,folder){
+    let storageRef = storage.ref('Imagenes/'+folder+'/'+nombre);
+    console.log(nombre);
+    if(nombre!='unnamed.jpg'){
+        storageRef.put(imagen);
     }
 }
 

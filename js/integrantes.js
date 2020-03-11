@@ -77,7 +77,7 @@ function getIntegrantes(){
             storageRef = storage.ref('Imagenes/'+imgAdd);
         }
         storageRef.getDownloadURL().then(function(url){
-            var tabla = createTableIntegrantes(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,imgAdd);
+            var tabla = createTableIntegrantes(idAdd,nombreAdd,apellidoAdd,edadAdd,generoAdd,carreraAdd,semAdd,mailAdd,url);
             innerHTML('tablaIntegrantes',tabla);
         });
     })

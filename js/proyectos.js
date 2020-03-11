@@ -1,23 +1,21 @@
-function arrayJSON(nombre,tema,descripcion,escuela,equipo,img){
+function arrayJSON(nombre,tema,descripcion,escuela,equipo){
     var data = {
         nombre : nombre,
         tema : tema,
         descripcion: descripcion,
         escuela: escuela,
-        equipo: equipo,
-        img: img
+        equipo: equipo
     };
     return data;
 }
 
-function createTableProyectos(id,nombre,tema,escuela,equipo,url){
+function createTableProyectos(id,nombre,tema,escuela,equipo){
     return '<tr>'+
     '<td id="tablaID">'+id+'</td>'+
     '<td>'+nombre+'</td>'+
     '<td>'+tema+'</td>'+
     '<td>'+escuela+'</td>'+
     '<td>'+equipo+'</td>'+
-    '<td><a href="'+url+'">'+url+'<a/></td>'+
     '</tr>';
 }
 
@@ -28,8 +26,6 @@ function setProyectos(){
     var descripcion = ($("#descripcion").val());
     var escuela = $("#escuela").val();
     var equipo = $("#equipo").val();
-    var imagen = document.getElementById('imagen').files[0];
-    var imgVerified = emptyImg(imagen);
 
     if(id.length==0||nombre.length==0||tema.length==0|| 
         escuela.length==0||equipo.length==0){
@@ -37,7 +33,6 @@ function setProyectos(){
     }else{
         var arrayData = arrayJSON(nombre,tema,descripcion,escuela,equipo,imgVerified);
         if (confirm('Los datos son correctos?')){
-            addImg(imagen,imgVerified,'proyectos');
             const insertar = firebase.database().ref('proyectos/'+id);
             insertar.update(arrayData);
             alert("Se Añadieron Correctamente");
@@ -57,17 +52,7 @@ function getProyectos(){
         var escuelaAdd = taskValue.escuela;
         var equipoAdd = taskValue.equipo;
         /*var bioAdd = taskValue.bio;*/
-        var imgAdd = taskValue.img;
-        var storageRef;
-        if(imgAdd!='unnamed.jpg'){
-            storageRef = storage.ref('Imagenes/'+'proyectos/'+imgAdd);
-        }else{
-            storageRef = storage.ref('Imagenes/'+imgAdd);
-        }
-        
-        storageRef.getDownloadURL().then(function(url){
-            var tabla = createTableProyectos(idAdd,nombreAdd,temaAdd,escuelaAdd,equipoAdd,url);
-            innerHTML('tablaProyectos',tabla);
-        });
-    })
+        var tabla = createTableProyectos(idAdd,nombreAdd,temaAdd,escuelaAdd,equipoAdd);
+        innerHTML('tablaProyectos',tabla);
+    });
 }

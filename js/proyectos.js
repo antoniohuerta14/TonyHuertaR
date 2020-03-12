@@ -31,7 +31,7 @@ function setProyectos(){
         escuela.length==0||equipo.length==0){
         alert("EMPTY FIELDS");
     }else{
-        var arrayData = arrayJSON(nombre,tema,descripcion,escuela,equipo,imgVerified);
+        var arrayData = arrayJSON(nombre,tema,descripcion,escuela,equipo);
         if (confirm('Los datos son correctos?')){
             const insertar = firebase.database().ref('proyectos/'+id);
             insertar.update(arrayData);

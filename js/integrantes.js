@@ -1,4 +1,4 @@
-function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,img){
+function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,img,url){
     var data = {
         nombre : nombre,
         apellido : apellido,
@@ -7,7 +7,8 @@ function arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,img){
         carrera: carrera,
         semestre: semestre,
         email: email,
-        img:img
+        img:img,
+        url:url
     };
     return data;
 }
@@ -43,11 +44,30 @@ function setIntegrantes(){
         alert("EMPTY FIELDS");
     }else{
         if(validateEmail(email)){
-            var arrayData = arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,imgVerified);
             if (confirm('Los datos son correctos?')){
-                addImg(imagen,imgVerified,'participantes');
-                const insertar = firebase.database().ref('participantes/'+id);
-                insertar.update(arrayData);
+                var storageRef = storage.ref('Imagenes/'+'participantes'+'/'+imgVerified);
+                if(imgVerified!='unnamed.jpg'){
+                    let uploadTask = storageRef.put(imagen);
+                    uploadTask.on('state_changed',function(snapshot){
+                        var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                        console.log('Upload is '+parseInt(progress)+'% done');
+                    },function(error){
+                        console.log(error.message);
+                    },function(){
+                        storageRef.getDownloadURL().then(function(url){
+                            var arrayData = arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,imgVerified,url);
+                            const insertar = firebase.database().ref('participantes'+'/'+id);
+                            insertar.update(arrayData); 
+                        });
+                    })
+                }else{
+                    storageRef = storage.ref('Imagenes/'+imgVerified);
+                    storageRef.getDownloadURL().then(function(url){
+                        var arrayData = arrayJSON(nombre,apellido,edad,genero,carrera,semestre,email,imgVerified,url);
+                        const insertar = firebase.database().ref('participantes'+'/'+id);
+                        insertar.update(arrayData); 
+                    });
+                }
                 alert("Se Añadieron Correctamente");
                 $('#formulario').trigger("reset");
             }

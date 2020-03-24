@@ -57,7 +57,8 @@ function addImg(imagen,nombre,folder){
     let storageRef = storage.ref('Imagenes/'+folder+'/'+nombre);
     console.log(nombre);
     if(nombre!='unnamed.jpg'){
-        storageRef.put(imagen);
+        let uploadTask = storageRef.put(imagen);
+        uploadTask.on('state_changed',function(snapshot){})
     }
 }
 

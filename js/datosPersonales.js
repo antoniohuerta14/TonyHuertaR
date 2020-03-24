@@ -1,4 +1,4 @@
-function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,img){
+function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,img,url){
     var data = {
         nombre : nombre,
         apellido : apellido,
@@ -7,7 +7,8 @@ function arrayJSON(nombre,apellido,email,tw,fb,yt,bio,img){
         facebook: fb,
         youtube: yt,
         bio: bio,
-        img:img
+        img:img,
+        url:url
     };
     return data;
 }
@@ -42,11 +43,30 @@ function setDatosPersonales(baseDatos){
         alert("EMPTY FIELDS");
     }else{
         if(validateEmail(email)){
-            var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,imgVerified); 
             if (confirm('Los datos son correctos?')){
-                addImg(imagen,imgVerified,baseDatos);
-                const insertar = firebase.database().ref(baseDatos+'/'+id);
-                insertar.update(arrayData);
+                var storageRef = storage.ref('Imagenes/'+baseDatos+'/'+imgVerified);
+                if(imgVerified!='unnamed.jpg'){
+                    let uploadTask = storageRef.put(imagen);
+                    uploadTask.on('state_changed',function(snapshot){
+                        var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                        console.log('Upload is '+parseInt(progress)+'% done');
+                    },function(error){
+                        console.log(error.message);
+                    },function(){
+                        storageRef.getDownloadURL().then(function(url){
+                            var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,imgVerified,url);
+                            const insertar = firebase.database().ref(baseDatos+'/'+id);
+                            insertar.update(arrayData); 
+                        });
+                    })
+                }else{
+                    storageRef = storage.ref('Imagenes/'+imgVerified);
+                    storageRef.getDownloadURL().then(function(url){
+                        var arrayData = arrayJSON(nombre,apellido,email,twitter,fb,yt,bio,imgVerified,url);
+                        const insertar = firebase.database().ref(baseDatos+'/'+id);
+                        insertar.update(arrayData); 
+                    });
+                }
                 alert("Se Añadieron Correctamente");
                 $('#formulario').trigger("reset");
             }
